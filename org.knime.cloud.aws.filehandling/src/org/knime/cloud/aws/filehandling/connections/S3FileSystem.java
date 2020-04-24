@@ -53,7 +53,6 @@ import java.nio.file.FileSystem;
 import java.nio.file.Path;
 import java.util.Collections;
 import java.util.Map;
-import java.util.Optional;
 
 import org.knime.cloud.core.util.port.CloudConnectionInformation;
 import org.knime.core.util.KnimeEncryption;
@@ -106,7 +105,8 @@ public class S3FileSystem extends BaseFileSystem<S3Path> {
             timeToLive, //
             PATH_SEPARATOR,
             Choice.CONNECTED_FS, //
-            Optional.of(connectionInformation.getHost()));
+            connectionInformation.getHost());
+
         m_normalizePaths = normalizePaths;
         try {
             if (connectionInformation.switchRole()) {
